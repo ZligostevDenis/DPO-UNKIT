@@ -1,0 +1,65 @@
+Злыгостев Денис Николаевич ИВТ-23-2б https://colab.research.google.com/drive/1CRd3PBN4gF14-Zi-WZ4Tt7qn8JRAELP8?usp=sharing
+
+--1--
+
+import random
+
+u= [random.randrange(0, 10) for _ in range(8)]
+
+print(u)
+print(list(reversed(u)))
+
+--2--
+
+
+import random
+
+def generate_list(k):
+  return [random.randrange(0, 10) for _ in range(k)]
+list1 = generate_list(8)
+list2 = generate_list(8)
+print(list1,list2)
+
+list3 = [list1[i] for i in range(0, len(list1), 2)] + [list2[i] for i in range(1, len(list2),2)]
+
+print(list3)
+
+--3--
+
+import random
+
+
+ListRand = [random.choice([random.randint(0,8), random.uniform(0,8), str(random.randint(0, 8))]) for _ in range(16)]
+
+print(ListRand)
+
+ListNoDubl = list(set(map(str, ListRand)))
+
+print(ListNoDubl)
+
+--4--
+
+Dict = {f"key {i}": random.choice([random.randint(0, 8), float(f"{random.uniform(0, 8)}")]) for i in range(10)}
+print(Dict)
+
+ValueKeys = {}
+for key, value in Dict.items():
+  if value not in ValueKeys:
+    ValueKeys[value] = []
+    ValueKeys[value].append(key)
+
+ListNoDubl = [(value, keys) for value, keys in ValueKeys.items()]
+print(ListNoDubl)
+
+--5--
+
+Dict1 = {f"key {i}": random.choice([random.randint(1, 10), float(f"{random.uniform(1, 10):.3f}")]) for i in range(10)}
+Dict2 = {f"key {i}": random.choice([random.randint(1, 10), float(f"{random.uniform(1, 10):.3f}")]) for i in range(10)}
+print(Dict1)
+print(Dict2)
+
+IntersectionValues = set(Dict1.values()).intersection(Dict2.values())
+intersectionDict = {k: i for k, i in Dict1.items() if i in IntersectionValues}
+
+print(IntersectionValues)
+print(intersectionDict)
